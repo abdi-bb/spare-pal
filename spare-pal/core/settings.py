@@ -121,3 +121,26 @@ STATIC_URL = 'static/'
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+
+
+############################################
+############################################
+####### Custom settings for the project ####
+############################################
+############################################
+
+# Application definition
+
+INSTALLED_APPS += [
+    # Third-party apps
+
+    # Local apps
+    'customers',
+    'deliveries',
+    'logistics',
+    'orders',
+    'parts',
+    'suppliers',
+]
+

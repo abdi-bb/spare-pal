@@ -5,7 +5,7 @@ from django.db import models
 from orders.models import Order
 
 
-class Logistics(models.Model):
+class Logistic(models.Model):
     name = models.CharField(max_length=255)
     location = models.CharField(max_length=255)
     email = models.EmailField()
