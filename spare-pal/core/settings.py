@@ -131,9 +131,11 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 ############################################
 
 # Application definition
-
 INSTALLED_APPS += [
     # Third-party apps
+    'rest_framework',
+    'corsheaders',
+    'drf_spectacular',
 
     # Local apps
     'customers',
@@ -143,4 +145,31 @@ INSTALLED_APPS += [
     'parts',
     'suppliers',
 ]
+
+# Middleware
+MIDDLEWARE += [
+    'corsheaders.middleware.CorsMiddleware',
+]
+
+# Rest Framework settings
+REST_FRAMEWORK = {
+    'DEFAULT_SCHEMA_CLASS': 'drf_spectacular.openapi.AutoSchema',
+}
+
+# DRF Spectacular settings
+SPECTACULAR_SETTINGS = {
+    'TITLE': 'SparePal API',
+    'DESCRIPTION': 'API for SparePal project',
+    'VERSION': '1.0.0',
+}
+
+# Static files (CSS, JavaScript, Images)
+STATIC_URL = 'static/'
+STATIC_ROOT = BASE_DIR / 'static'
+
+# Media files
+MEDIA_URL = '/media/'
+MEDIA_ROOT = BASE_DIR / 'media'
+
+
 
