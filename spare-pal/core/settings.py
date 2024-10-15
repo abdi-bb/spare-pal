@@ -138,11 +138,11 @@ INSTALLED_APPS += [
     'drf_spectacular',
 
     # Local apps
-    'customers',
-    'deliveries',
-    'logistics',
-    'orders',
-    'parts',
+    # 'customers',
+    # 'deliveries',
+    # 'logistics',
+    # 'orders',
+    # 'parts',
     'suppliers',
 ]
 
