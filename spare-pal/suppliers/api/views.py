@@ -65,6 +65,7 @@ class CompanyManagerDetailViewSet(viewsets.ModelViewSet):
 # Django API Endpoint to Serve Choices
 from rest_framework.views import APIView
 from rest_framework.decorators import api_view
+from drf_spectacular.utils import extend_schema
 
 from suppliers.models import (
 LEGAL_STATUS_CHOICES,
@@ -77,18 +78,34 @@ KEBELE_CHOICES,
 SITE_ID_CHOICES
 )
 
-
-@api_view(['GET'])
-def get_choices(request):
-    choices = {
-        'legal_status': LEGAL_STATUS_CHOICES,
-        'business_description': BUSINESS_DESCRIPTION_CHOICES,
-        'sub_group_description': SUB_GROUP_DESCRIPTION_CHOICES,
-        'region': REGION_CHOICES,
-        'zone': ZONE_CHOICES,
-        'woreda': WOREDA_CHOICES,
-        'kebele': KEBELE_CHOICES,
-        'site_id': SITE_ID_CHOICES
+@extend_schema(
+    responses={
+        200: {
+            'type': 'object',
+            'properties': {
+                'legal_status': {'type': 'array', 'items': {'type': 'string'}},
+                'business_description': {'type': 'array', 'items': {'type': 'string'}},
+                'sub_group_description': {'type': 'array', 'items': {'type': 'string'}},
+                'region': {'type': 'array', 'items': {'type': 'string'}},
+                'zone': {'type': 'array', 'items': {'type': 'string'}},
+                'woreda': {'type': 'array', 'items': {'type': 'string'}},
+                'kebele': {'type': 'array', 'items': {'type': 'string'}},
+                'site_id': {'type': 'array', 'items': {'type': 'string'}},
+            }
+        }
     }
+)
+class GetChoicesAPIView(APIView):
+    def get(self, request):
+        choices = {
+            'legal_status': LEGAL_STATUS_CHOICES,
+            'business_description': BUSINESS_DESCRIPTION_CHOICES,
+            'sub_group_description': SUB_GROUP_DESCRIPTION_CHOICES,
+            'region': REGION_CHOICES,
+            'zone': ZONE_CHOICES,
+            'woreda': WOREDA_CHOICES,
+            'kebele': KEBELE_CHOICES,
+            'site_id': SITE_ID_CHOICES
+        }
 
-    return Response(choices)
+        return Response(choices, status=status.HTTP_200_OK)
