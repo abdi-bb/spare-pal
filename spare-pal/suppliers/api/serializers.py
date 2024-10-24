@@ -13,11 +13,15 @@ class SupplierSerializer(serializers.ModelSerializer):
 
 
 class CompanyDetailAddressSerializer(serializers.ModelSerializer):
+    company_name = serializers.CharField(source='company.company_name', read_only=True)
+
     class Meta:
         model = CompanyDetailAddress
         fields = '__all__'
 
 class CompanyManagerDetailSerializer(serializers.ModelSerializer):
+    company_name = serializers.CharField(source='company.company_name', read_only=True)
+    
     class Meta:
         model = CompanyManagerDetail
         fields = '__all__'
