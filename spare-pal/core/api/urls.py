@@ -7,4 +7,6 @@ router.registry.extend(supplier_router.registry)
 
 urlpatterns = [
     path('', include(router.urls)),
+    # Add this to include non-router paths like `choices/`
+    path('', include('suppliers.api.urls')),  # Include the suppliers' URLs to handle choices/
 ]
