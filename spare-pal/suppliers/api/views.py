@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import get_object_or_404, render
 
 # Create your views here.
 
@@ -17,65 +17,48 @@ class CompanyDetailAddressViewSet(viewsets.ModelViewSet):
     queryset = CompanyDetailAddress.objects.all()
     serializer_class = CompanyDetailAddressSerializer
 
-    # def create(self, request, *args, **kwargs):
-    #     data = request.data.copy() # Make mutable copy of request data
-    #     supplier_id = data.pop('supplier_id', None)
-    #     print(supplier_id)
-    #     if supplier_id is None:
-    #         return Response({"error": "supplier_id is required."}, status=status.HTTP_400_BAD_REQUEST)
+    def create(self, request, *args, **kwargs):
+        data = request.data.copy()  # Make mutable copy of request data
+        company_id = data.pop('company_id', None)
+
+        if company_id is None:
+            return Response({"error": "company_id is required."}, status=status.HTTP_400_BAD_REQUEST)
         
-    #     # Check if supplier_id is a list and take the first element
-    #     if isinstance(supplier_id, list):
-    #         if len(supplier_id) > 0:
-    #             supplier_id = supplier_id[0]  # Take the first item from the list
-    #         else:
-    #             return Response({"error": "supplier_id cannot be an empty list."}, status=status.HTTP_400_BAD_REQUEST)
-    #     try:
-    #         # Attempt to typecast supplier_id to an integer
-    #         supplier_id = int(supplier_id)
-    #         supplier = Supplier.objects.get(id=supplier_id)
-    #     except ValueError:
-    #         return Response({"error": "supplier_id must be a valid integer."}, status=status.HTTP_400_BAD_REQUEST)
-    #     except Supplier.DoesNotExist:
-    #         return Response({"error": "Supplier not found."}, status=status.HTTP_404_NOT_FOUND)
+        try:
+            company_id = int(company_id)
+        except ValueError:
+            return Response({"error": "company_id must be a valid integer."}, status=status.HTTP_400_BAD_REQUEST)
+
+        company = get_object_or_404(Supplier, id=company_id)
         
-    #     serializer = self.get_serializer(data=data)
-    #     serializer.is_valid(raise_exception=True)
-    #     serializer.save(company=supplier)
-    #     return Response(serializer.data, status=status.HTTP_201_CREATED)
+        serializer = self.get_serializer(data=data)
+        serializer.is_valid(raise_exception=True)
+        serializer.save(company=company)  # Link the address to the company
+        return Response(serializer.data, status=status.HTTP_201_CREATED)
     
 
 class CompanyManagerDetailViewSet(viewsets.ModelViewSet):
     queryset = CompanyManagerDetail.objects.all()
     serializer_class = CompanyManagerDetailSerializer
 
-    # def create(self, request, *args, **kwargs):
-    #     data = request.data.copy() # Make mutable copy of request data
-    #     supplier_id = data.pop('supplier_id', None)
+    def create(self, request, *args, **kwargs):
+        data = request.data.copy()  # Make mutable copy of request data
+        company_id = data.pop('company_id', None)
 
-    #     supplier_id = request.data.pop('supplier_id')
-    #     if supplier_id is None:
-    #         return Response({"error": "supplier_id is required."}, status=status.HTTP_400_BAD_REQUEST)
-        
-    #     # Check if supplier_id is a list and take the first element
-    #     if isinstance(supplier_id, list):
-    #         if len(supplier_id) > 0:
-    #             supplier_id = supplier_id[0]  # Take the first item from the list
-    #         else:
-    #             return Response({"error": "supplier_id cannot be an empty list."}, status=status.HTTP_400_BAD_REQUEST)
-    #     try:
-    #         # Attempt to typecast supplier_id to an integer
-    #         supplier_id = int(supplier_id)
-    #         supplier = Supplier.objects.get(id=supplier_id)
-    #     except ValueError:
-    #         return Response({"error": "supplier_id must be a valid integer."}, status=status.HTTP_400_BAD_REQUEST)
-    #     except Supplier.DoesNotExist:
-    #         return Response({"error": "Supplier not found."}, status=status.HTTP_404_NOT_FOUND)
-        
-    #     serializer = self.get_serializer(data=data)
-    #     serializer.is_valid(raise_exception=True)
-    #     serializer.save(company=supplier)
-    #     return Response(serializer.data, status=status.HTTP_201_CREATED)
+        if company_id is None:
+            return Response({"error": "company_id is required."}, status=status.HTTP_400_BAD_REQUEST)
+
+        try:
+            company_id = int(company_id)
+        except ValueError:
+            return Response({"error": "company_id must be a valid integer."}, status=status.HTTP_400_BAD_REQUEST)
+
+        company = get_object_or_404(Supplier, id=company_id)
+
+        serializer = self.get_serializer(data=data)
+        serializer.is_valid(raise_exception=True)
+        serializer.save(company=company)  # Link the manager to the company
+        return Response(serializer.data, status=status.HTTP_201_CREATED)
 
 
 
