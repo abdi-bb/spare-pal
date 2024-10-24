@@ -76,3 +76,36 @@ class CompanyManagerDetailViewSet(viewsets.ModelViewSet):
     #     serializer.is_valid(raise_exception=True)
     #     serializer.save(company=supplier)
     #     return Response(serializer.data, status=status.HTTP_201_CREATED)
+
+
+
+# Django API Endpoint to Serve Choices
+from rest_framework.views import APIView
+from rest_framework.decorators import api_view
+
+from suppliers.models import (
+LEGAL_STATUS_CHOICES,
+BUSINESS_DESCRIPTION_CHOICES,
+SUB_GROUP_DESCRIPTION_CHOICES,
+REGION_CHOICES,
+ZONE_CHOICES,
+WOREDA_CHOICES,
+KEBELE_CHOICES,
+SITE_ID_CHOICES
+)
+
+
+@api_view(['GET'])
+def get_choices(request):
+    choices = {
+        'legal_status': LEGAL_STATUS_CHOICES,
+        'business_description': BUSINESS_DESCRIPTION_CHOICES,
+        'sub_group_description': SUB_GROUP_DESCRIPTION_CHOICES,
+        'region': REGION_CHOICES,
+        'zone': ZONE_CHOICES,
+        'woreda': WOREDA_CHOICES,
+        'kebele': KEBELE_CHOICES,
+        'site_id': SITE_ID_CHOICES
+    }
+
+    return Response(choices)
