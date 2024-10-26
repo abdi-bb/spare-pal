@@ -6,9 +6,9 @@ class SupplierSerializer(serializers.ModelSerializer):
     class Meta:
         model = Supplier
         fields = [
-            'company_name', 'date_registered', 'tin_number', 'renewed_license_date',
-            'license_number', 'legal_status', 'code', 'business_description',
-            'sub_group_code', 'sub_group_description'
+            'id', 'company_name', 'date_registered', 'tin_number',
+            'renewed_license_date', 'license_number', 'legal_status', 'code',
+            'business_description', 'sub_group_code', 'sub_group_description'
         ]
 
 
