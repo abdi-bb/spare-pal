@@ -14,6 +14,8 @@ class SupplierSerializer(serializers.ModelSerializer):
 
 class CompanyDetailAddressSerializer(serializers.ModelSerializer):
     company = serializers.CharField(read_only=True)
+    company_id = serializers.CharField(source='company.id', read_only=True)
+
 
     class Meta:
         model = CompanyDetailAddress
@@ -21,6 +23,8 @@ class CompanyDetailAddressSerializer(serializers.ModelSerializer):
 
 class CompanyManagerDetailSerializer(serializers.ModelSerializer):
     company = serializers.CharField(read_only=True)
+    company_id = serializers.CharField(source='company.id', read_only=True)
+
     
     class Meta:
         model = CompanyManagerDetail
