@@ -5,7 +5,7 @@ from django.shortcuts import get_object_or_404, render
 from rest_framework import viewsets, status
 from rest_framework.response import Response
 from rest_framework.exceptions import NotFound
-from suppliers.models import Supplier, CompanyDetailAddress, CompanyManagerDetail
+from apps.suppliers.models import Supplier, CompanyDetailAddress, CompanyManagerDetail
 from .serializers import SupplierSerializer, CompanyDetailAddressSerializer, CompanyManagerDetailSerializer
 
 class SupplierViewSet(viewsets.ModelViewSet):
@@ -67,7 +67,7 @@ from rest_framework.views import APIView
 from rest_framework.decorators import api_view
 from drf_spectacular.utils import extend_schema
 
-from suppliers.models import (
+from apps.suppliers.models import (
 LEGAL_STATUS_CHOICES,
 BUSINESS_DESCRIPTION_CHOICES,
 SUB_GROUP_DESCRIPTION_CHOICES,

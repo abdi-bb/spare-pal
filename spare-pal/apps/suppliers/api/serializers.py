@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from suppliers.models import Supplier, CompanyDetailAddress, CompanyManagerDetail
+from apps.suppliers.models import Supplier, CompanyDetailAddress, CompanyManagerDetail
 
 
 class SupplierSerializer(serializers.ModelSerializer):

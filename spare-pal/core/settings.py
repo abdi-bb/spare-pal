@@ -143,7 +143,7 @@ INSTALLED_APPS += [
     # 'logistics',
     # 'orders',
     # 'parts',
-    'suppliers',
+    'apps.suppliers',
 ]
 
 # Middleware
