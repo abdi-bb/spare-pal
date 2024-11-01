@@ -13,3 +13,6 @@ os.environ.setdefault("DJANGO_SETTINGS_MODULE", django_settings_module)
 app = Celery("config")
 app.config_from_object("django.conf:settings", namespace="CELERY")
 app.autodiscover_tasks()
+
+# Elliminate the warning about broker_connection_retry
+app.conf.broker_connection_retry_on_startup = True
