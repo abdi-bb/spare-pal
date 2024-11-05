@@ -7,11 +7,17 @@ services:
     restart: always
     ports:
       - "5444:5432"
-    # Create postgres db super user with password
     # environment:
-    #   - POSTGRES_USER=${DB_USERNAME}
-    #   - POSTGRES_PASSWORD=${DB_PASSWORD}
-    #   - POSTGRES_DB=${DB_NAME}
+    #   # Create postgres db super user with password
+    #   - POSTGRES_USER=${POSTGRES_USER}
+    #   - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
+    #   - POSTGRES_DB=${POSTGRES_DB}
+    #   # Specify project db user, project db and db password
+    #   - DB_NAME=test_db
+    #   - DB_USERNAME=test_usr
+    #   - DB_PASSWORD=test_pwd
+    #   - DB_HOSTNAME=db
+    #   - DB_PORT=5432
     env_file:
       - ./.env
     volumes:
