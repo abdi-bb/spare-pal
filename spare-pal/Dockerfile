@@ -21,6 +21,9 @@ RUN chmod +x /app/entrypoint.sh
 
 COPY . .
 
+# Set permissions for the /app directory
+RUN chown -R appuser:appuser /app
+
 # Switch to the non-root user
 USER appuser
 

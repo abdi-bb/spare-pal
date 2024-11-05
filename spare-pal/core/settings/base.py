@@ -213,8 +213,8 @@ ACCOUNT_AUTHENTICATION_METHOD = 'email'
 ACCOUNT_USERNAME_REQUIRED = False
 ACCOUNT_EMAIL_REQUIRED = True
 ACCOUNT_UNIQUE_EMAIL = True
-# ACCOUNT_EMAIL_VERIFICATION = 'mandatory'
-ACCOUNT_EMAIL_VERIFICATION = 'none' # Override the above setting to configure for social login(No email verification required, as the email is already verified by the social provider)
+ACCOUNT_EMAIL_VERIFICATION = 'mandatory'
+# ACCOUNT_EMAIL_VERIFICATION = 'none' # Override the above setting to configure for social login(No email verification required, as the email is already verified by the social provider)
 
 
 # Rest Framework settings
@@ -238,9 +238,9 @@ SIMPLE_JWT = {
 # Rest auth settings
 REST_AUTH = {
     # Serializer settings
-    'LOGIN_SERIALIZER': 'accounts.api.serializers.CustomUserLoginSerializer',
-    'REGISTER_SERIALIZER': 'accounts.api.serializers.CustomUserRegisterSerializer',
-    'USER_DETAILS_SERIALIZER': 'accounts.api.serializers.CustomUserDetailsSerializer',
+    'LOGIN_SERIALIZER': 'apps.accounts.api.serializers.CustomUserLoginSerializer',
+    'REGISTER_SERIALIZER': 'apps.accounts.api.serializers.CustomUserRegisterSerializer',
+    'USER_DETAILS_SERIALIZER': 'apps.accounts.api.serializers.CustomUserDetailsSerializer',
 
     # Password Settings
     'OLD_PASSWORD_FIELD_ENABLED': True,

@@ -9,4 +9,5 @@ urlpatterns = [
     path('', include(router.urls)),
     # Add this to include non-router paths like `choices/`
     path('', include('apps.suppliers.api.urls')),  # Include the suppliers' URLs to handle choices/
+    path('auth/', include('apps.accounts.api.urls')),
 ]
