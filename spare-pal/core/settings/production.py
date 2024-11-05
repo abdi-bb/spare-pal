@@ -25,10 +25,10 @@ EMAIL_USE_TLS = True
 DATABASES = {
     "default": {
         "ENGINE": "django.db.backends.postgresql",
-        "NAME": config("DB_NAME"),
-        "USER": config("DB_USERNAME"),
-        "PASSWORD": config("DB_PASSWORD"),
-        "HOST": config("DB_HOSTNAME"),
+        "NAME": config("DB_NAME", 'project_db'),
+        "USER": config("USER", 'project_db_usr'),
+        "PASSWORD": config("DB_PASSWORD", 'projet_db_pwd'),
+        "HOST": config("DB_HOSTNAME", 'db'),
         "PORT": config("DB_PORT", cast=int),
     }
 }
