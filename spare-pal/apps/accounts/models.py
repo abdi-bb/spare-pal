@@ -49,6 +49,11 @@ class CustomUser(AbstractBaseUser, PermissionsMixin):
             "Unselect this instead of deleting accounts."
         ),
     )
+    is_supplier = models.BooleanField(
+        _("supplier status"),
+        default=False,
+        help_text=_("Designates whether the user is a supplier and can create a company or is simply a regular user."),
+    )
     date_joined = models.DateTimeField(_("date joined"), default=timezone.now)
 
     objects = CustomUserManager()
