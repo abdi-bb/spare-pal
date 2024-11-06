@@ -265,7 +265,7 @@ SPECTACULAR_SETTINGS = {
 }
 
 # activate the email account once the user clicks on the link
-ACCOUNT_CONFACCOUNT_CONFIRM_EMAIL_ON_GET = True
+ACCOUNT_CONFIRM_EMAIL_ON_GET = True
 
 # Site ID
 SITE_ID = 1
