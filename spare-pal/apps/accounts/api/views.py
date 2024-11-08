@@ -114,3 +114,22 @@ class UserRedirectView(LoginRequiredMixin, RedirectView):
 
     def get_redirect_url(self):
         return "redirect-url"
+    
+
+
+
+# Customize the verification link
+from allauth.account.adapter import DefaultAccountAdapter
+from decouple import config
+
+class CustomAccountAdapter(DefaultAccountAdapter):
+
+    def get_email_confirmation_url(self, request, emailconfirmation):
+
+        """
+            Changing the confirmation URL to fit the domain that we are working on
+        """
+
+        domain_url = config("DOMAIN_URL", default="http://localhost:3000")
+        url = f"{domain_url}/auth/verify-account/{emailconfirmation.key}"
+        return url

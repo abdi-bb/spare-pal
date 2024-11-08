@@ -215,6 +215,8 @@ ACCOUNT_EMAIL_REQUIRED = True
 ACCOUNT_UNIQUE_EMAIL = True
 ACCOUNT_EMAIL_VERIFICATION = 'mandatory'
 # ACCOUNT_EMAIL_VERIFICATION = 'none' # Override the above setting to configure for social login(No email verification required, as the email is already verified by the social provider)
+# activate the email account once the user clicks on the link
+ACCOUNT_CONFIRM_EMAIL_ON_GET = True
 
 
 # Rest Framework settings
@@ -265,11 +267,14 @@ SPECTACULAR_SETTINGS = {
     # OTHER SETTINGS
 }
 
-# activate the email account once the user clicks on the link
-ACCOUNT_CONFIRM_EMAIL_ON_GET = True
-
 # Site ID
 SITE_ID = 1
+
+# Set the default from email address
+DEFAULT_FROM_EMAIL = 'no-reply@sparepal.com'
+
+# write custom url link that is to be sent via email
+ACCOUNT_ADAPTER = "apps.accounts.api.views.CustomAccountAdapter"
 
 # Celery
 CELERY_BROKER_URL = config("CELERY_BROKER_URL")
