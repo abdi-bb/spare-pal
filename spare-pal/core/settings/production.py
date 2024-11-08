@@ -40,3 +40,5 @@ CACHES = {
         "LOCATION": config("REDIS_BACKEND"),
     },
 }
+
+# LOGIN_URL = 'http:/sparepal.com/auth/login'

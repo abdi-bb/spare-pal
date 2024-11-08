@@ -1,7 +1,7 @@
 from .base import *
 
 # Login url
-LOGIN_URL = 'https://localhost:8000/users/login'
+LOGIN_URL = 'http:/localhost:3000/auth/login'
 
 # Email
 EMAIL_BACKEND = "django.core.mail.backends.console.EmailBackend"
