@@ -88,7 +88,6 @@ SITE_ID_CHOICES
                 'region': {'type': 'array', 'items': {'type': 'string'}},
                 'zone': {'type': 'array', 'items': {'type': 'string'}},
                 'woreda': {'type': 'array', 'items': {'type': 'string'}},
-                'kebele': {'type': 'array', 'items': {'type': 'string'}},
                 'site_id': {'type': 'array', 'items': {'type': 'string'}},
             }
         }
