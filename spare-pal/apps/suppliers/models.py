@@ -43,12 +43,6 @@ WOREDA_CHOICES = [
     ('Woreda 3', 'Woreda 3'),
 ]
 
-KEBELE_CHOICES = [
-    ('Kebele 1', 'Kebele 1'),
-    ('Kebele 2', 'Kebele 2'),
-    ('Kebele 3', 'Kebele 3'),
-]
-
 SITE_ID_CHOICES = [
     ('Site A', 'Site A'),
     ('Site B', 'Site B'),
@@ -78,7 +72,6 @@ class CompanyDetailAddress(models.Model):
     region = models.CharField(max_length=100, choices=REGION_CHOICES)
     zone = models.CharField(max_length=100, choices=ZONE_CHOICES)
     woreda = models.CharField(max_length=100, choices=WOREDA_CHOICES)
-    kebele = models.CharField(max_length=100, choices=KEBELE_CHOICES)
     house_number = models.CharField(max_length=50)
     business_phone_number = models.CharField(max_length=20)
     capital = models.DecimalField(max_digits=15, decimal_places=2)
