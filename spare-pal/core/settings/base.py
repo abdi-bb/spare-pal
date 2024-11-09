@@ -168,7 +168,7 @@ INSTALLED_APPS += [
     # 'logistics',
     # 'orders',
     # 'parts',
-    'apps.suppliers',
+    'apps.companies',
     'apps.accounts',
 ]
 

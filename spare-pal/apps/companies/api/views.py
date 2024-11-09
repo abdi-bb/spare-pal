@@ -5,12 +5,12 @@ from django.shortcuts import get_object_or_404, render
 from rest_framework import viewsets, status
 from rest_framework.response import Response
 from rest_framework.exceptions import NotFound
-from apps.suppliers.models import Supplier, CompanyDetailAddress, CompanyManagerDetail
-from .serializers import SupplierSerializer, CompanyDetailAddressSerializer, CompanyManagerDetailSerializer
+from apps.companies.models import Company, CompanyDetailAddress, CompanyManagerDetail
+from .serializers import CompanySerializer, CompanyDetailAddressSerializer, CompanyManagerDetailSerializer
 
-class SupplierViewSet(viewsets.ModelViewSet):
-    queryset = Supplier.objects.all()
-    serializer_class = SupplierSerializer
+class CompanyViewSet(viewsets.ModelViewSet):
+    queryset = Company.objects.all()
+    serializer_class = CompanySerializer
 
 
 class CompanyDetailAddressViewSet(viewsets.ModelViewSet):
@@ -67,7 +67,7 @@ from rest_framework.views import APIView
 from rest_framework.decorators import api_view
 from drf_spectacular.utils import extend_schema
 
-from apps.suppliers.models import (
+from apps.companies.models import (
 LEGAL_STATUS_CHOICES,
 BUSINESS_DESCRIPTION_CHOICES,
 SUB_GROUP_DESCRIPTION_CHOICES,
@@ -102,7 +102,6 @@ class GetChoicesAPIView(APIView):
             'region': REGION_CHOICES,
             'zone': ZONE_CHOICES,
             'woreda': WOREDA_CHOICES,
-            'kebele': KEBELE_CHOICES,
             'site_id': SITE_ID_CHOICES
         }
 

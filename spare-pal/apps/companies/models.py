@@ -51,7 +51,7 @@ SITE_ID_CHOICES = [
 
 # Models
 
-class Supplier(models.Model):
+class Company(models.Model):
     company_name = models.CharField(max_length=255)
     date_registered = models.DateField()
     tin_number = models.CharField(max_length=20)
@@ -68,7 +68,7 @@ class Supplier(models.Model):
 
 
 class CompanyDetailAddress(models.Model):
-    company = models.ForeignKey(Supplier, on_delete=models.CASCADE, related_name='addresses')
+    company = models.ForeignKey(Company, on_delete=models.CASCADE, related_name='addresses')
     region = models.CharField(max_length=100, choices=REGION_CHOICES)
     zone = models.CharField(max_length=100, choices=ZONE_CHOICES)
     woreda = models.CharField(max_length=100, choices=WOREDA_CHOICES)
@@ -82,7 +82,7 @@ class CompanyDetailAddress(models.Model):
 
 
 class CompanyManagerDetail(models.Model):
-    company = models.ForeignKey(Supplier, on_delete=models.CASCADE, related_name='managers')
+    company = models.ForeignKey(Company, on_delete=models.CASCADE, related_name='managers')
     manager_full_name = models.CharField(max_length=255)
     last_name = models.CharField(max_length=255)
     manager_phone_number = models.CharField(max_length=20)
