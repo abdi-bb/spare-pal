@@ -1,10 +1,10 @@
 from rest_framework import serializers
-from apps.suppliers.models import Supplier, CompanyDetailAddress, CompanyManagerDetail
+from apps.companies.models import Company, CompanyDetailAddress, CompanyManagerDetail
 
 
-class SupplierSerializer(serializers.ModelSerializer):
+class CompanySerializer(serializers.ModelSerializer):
     class Meta:
-        model = Supplier
+        model = Company
         fields = [
             'id', 'company_name', 'date_registered', 'tin_number',
             'renewed_license_date', 'license_number', 'legal_status', 'code',
