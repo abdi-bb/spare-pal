@@ -2,6 +2,8 @@ from django.db import models
 
 # Create your models here.
 
+from django.contrib.auth import get_user_model
+
 # Selection options (Assumed)
 LEGAL_STATUS_CHOICES = [
     ('Sole Proprietorship', 'Sole Proprietorship'),
@@ -62,6 +64,7 @@ class Company(models.Model):
     business_description = models.CharField(max_length=100, choices=BUSINESS_DESCRIPTION_CHOICES)
     sub_group_code = models.CharField(max_length=50)
     sub_group_description = models.CharField(max_length=100, choices=SUB_GROUP_DESCRIPTION_CHOICES)
+    created_by = models.ForeignKey(get_user_model(), on_delete=models.CASCADE, related_name='companies_created')
 
     def __str__(self):
         return self.company_name
@@ -72,7 +75,7 @@ class CompanyDetailAddress(models.Model):
     region = models.CharField(max_length=100, choices=REGION_CHOICES)
     zone = models.CharField(max_length=100, choices=ZONE_CHOICES)
     woreda = models.CharField(max_length=100, choices=WOREDA_CHOICES)
-    house_number = models.CharField(max_length=50)
+    house_number = models.CharField(max_length=50, blank=True)
     business_phone_number = models.CharField(max_length=20)
     capital = models.DecimalField(max_digits=15, decimal_places=2)
     site_id = models.CharField(max_length=50, choices=SITE_ID_CHOICES)
